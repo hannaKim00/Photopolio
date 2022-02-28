@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      overflow-x: hidden;
+    }
+    #menu {
+      width: 100vw;
+      height: 8vh;
+      background: #eee;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: fixed;
+      left: 0;
+      right: 0;
+      top: 0;
+    }
+    #menu > div {
+      margin: 0 5vw;
+    }
+    #container section {
+      width: 100vw;
+      height: 100vh;
+      background: lightblue;
+    }
+    #container section:nth-child(2) {
+      background: lightcoral;
+    }
+    #container section:nth-child(3) {
+      background: lightgoldenrodyellow;
+    }
+    #container section:nth-child(4) {
+      background: lightgreen;
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+
+    <div id="menu">
+      <div>1</div>
+      <div>2</div>
+      <div>3</div>
+      <div>4</div>
+    </div>
+
+    <section></section>
+    <section></section>
+    <section></section>
+    <section></section>
+  </div>
+
+  <script src="./js/index.js"></script>
+</body>
+</html>
