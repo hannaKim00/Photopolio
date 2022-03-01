@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=Gamja+Flower&family=Gowun+Dodum&family=IBM+Plex+Sans+KR:wght@300;400;500&display=swap');
+
+$color1 : #2F4858;
+$color2 : #F5F0ED;
+$color3 : #E5C1C5;
+
+// reset
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+ul {
+  list-style: none;
+}
+a {
+  color: #282828;
+  text-decoration: none;
+}
+body {
+  width: 100vw;
+  overflow-x: hidden;
+  color: $color1;
+  font: 16px 'IBM Plex Sans KR', sans-serif;
+}
+
+// mixin set *************************
+// size
+@mixin size-set($width, $height) {
+  width: $width;
+  height: $height;
+}
+@mixin size-set-color($width, $height, $color) {
+  width: $width;
+  height: $height;
+  background: $color;
+}
+
+// display
+@mixin flex-set($justify, $align, $direction) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+  flex-direction: $direction;
+}
+@mixin grid-set($rows, $columns, $gap) {
+  display: grid;
+  grid-template-rows: $rows;
+  grid-template-columns: $columns;
+  gap: $gap;
+}
+
+// font
+@mixin font-set($size, $weight, $align, $color) {
+  font-size: $size;
+  font-weight: $weight;
+  text-align: $align;
+  color: $color;
+}
+
+// position
+@mixin absolute-top-left($top, $left, $translate) {
+  position: absolute;
+  top: $top;
+  left: $left;
+  transform: $translate;
+}
+@mixin absolute-top-right($top, $right, $translate) {
+  position: absolute;
+  top: $top;
+  right: $right;
+  transform: $translate;
+}
+@mixin relative-top-left($top, $left) {
+  position: relative;
+  top: $top;
+  left: $left;
+}
+@mixin relative-top-right($top, $right) {
+  position: relative;
+  top: $top;
+  right: $right;
+}
+
+
+// header set ***************
+#header {
+  @include size-set(100vw, 10vh);
+  @include flex-set(space-between, center, row);
+  @include font-set(1.6em, 400, center, $color1);
+  font-family: 'Gaegu', cursive;
+  padding: 0 150px 0 5vw;
+
+  #logo {
+    @include flex-set(center, center, row);
+    font-weight: 700;
+    
+    & > span {
+      position: relative;
+      animation: logo .8s alternate infinite;
+    }
+  }
+
+  ul {
+    width: 0;
+    overflow: hidden;
+    transition: .7s;
+    @include flex-set(flex-end, center, row);
+
+    li {
+      margin : 0 1.5vw;
+      white-space:nowrap;
+      cursor: pointer;
+    }
+    li:hover {
+      color: $color3;
+    }
+    li.on {
+      font-weight: 700;
+    }
+  }
+
+  #Hamburger {
+    @include size-set(30px, 21px);
+    @include absolute-top-right(3.8vh, 2.3vw, translateX(0));
+    cursor: pointer;
+    z-index: 10;
+
+    & > div {
+      @include size-set-color(30px, 3px, $color1);
+      @include absolute-top-left(0, 0, translateY(0));
+    }
+    & > div:nth-child(2) {
+      @include absolute-top-left(50%, 0, translateY(-50%));
+    }
+    & > div:nth-child(3) {
+      @include absolute-top-left(calc(100% - 3px), 0, translateY(0));
+    }
+  }
+  #Hamburger:hover > div {
+    background: $color2;
+  }
+}
+
+
+// tablet
+@media all and (min-width:768px) and (max-width:1024px) {
+  body {
+    font-size: 14px;
+  }
+  #header {
+    height: 12vh;
+  }
+}
