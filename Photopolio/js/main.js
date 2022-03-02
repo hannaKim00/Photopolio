@@ -1,6 +1,5 @@
-
 const home = document.querySelector('#home');
-const photopolio = document.querySelector('#text img');
+const photopolio = document.querySelector('#text h2');
 const icon = document.querySelectorAll('#home > span');
 
 window.addEventListener('load', ( )=> {
@@ -44,5 +43,32 @@ botton.addEventListener('click', () => {
     bottons[1].style.opacity = '1';
     bottons[2].style.transform = 'translateY(0) rotate(0)';
     on = true;
+  }
+});
+
+
+const header = document.querySelector('#header');
+const menu = document.querySelectorAll('#header ul li');
+const section = document.querySelectorAll('#container > section');
+// 클릭한 메뉴의 section으로 이동
+for(i = 0; i < menu.length; i++) {
+  menu[i].addEventListener('click', function(event) {
+    if(event.target === menu[0]) {
+      window.scroll({top:section[0].offsetTop, behavior:'smooth'});
+    } else if(event.target === menu[1]) {
+      window.scroll({top:section[1].offsetTop, behavior:'smooth'});
+    } else if(event.target === menu[2]) {
+      window.scroll({top:section[2].offsetTop, behavior:'smooth'});
+    } else {
+      window.scroll({top:section[3].offsetTop, behavior:'smooth'});
+    }
+  });
+};
+// 2번째 section에서 글자색 변경
+window.addEventListener('scroll', function(){
+  if(window.scrollY >= section[1].offsetTop && window.scrollY < section[2].offsetTop) {
+    header.style.color = '#F5F0ED';
+  } else {
+    header.style.color = '#2F4858';
   }
 });

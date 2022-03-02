@@ -12,9 +12,3 @@ const menuSlider = (target, width, transition) => {
   target.style.transition = transition;
 };
 
-const header = document.querySelector('header');
-
-window.addEventListener('load', function() {
-  opacityTransition(header, '1', '1s');
-  header.style.top = '0';
-});

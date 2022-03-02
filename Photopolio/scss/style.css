@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=Gamja+Flower&family=Gowun+Dodum&family=IBM+Plex+Sans+KR:wght@300;400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Gaegu:wght@300;400;700&family=IBM+Plex+Sans+KR:wght@300;400;500&family=Pangolin&display=swap");
 * {
   margin: 0;
   padding: 0;
@@ -42,6 +42,8 @@ body {
   font-weight: 400;
   text-align: center;
   color: #2F4858;
+  position: fixed;
+  z-index: 3;
   font-family: 'Gaegu', cursive;
   padding: 0 150px 0 5vw;
 }
@@ -150,8 +152,47 @@ body {
   body {
     font-size: 14px;
   }
-  #header {
+  body #header {
     height: 12vh;
+  }
+}
+
+@media all and (min-width: 320px) and (max-width: 768px) {
+  body {
+    font-size: 13px;
+  }
+  body #header {
+    height: 10vh;
+  }
+  body #header ul {
+    position: absolute;
+    top: 0;
+    right: -45vw;
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+    width: 100vw;
+    height: 100vh;
+    background: #E5C1C5;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    padding-bottom: 60vh;
+    padding-right: 42vw;
+    font-size: 1.2em;
+  }
+  body #header ul li {
+    margin-bottom: 3vh;
+  }
+  body #header ul li:hover {
+    color: #F5F0ED;
+  }
+  body #header #Hamburger {
+    top: 3.0vh;
+    right: 3.8vw;
+  }
+  body #header #Hamburger > div {
+    width: 27px;
   }
 }
 
@@ -200,20 +241,22 @@ body {
   font-weight: normal;
   text-align: center;
   color: #5F6476;
-  font-family: 'Gamja Flower', cursive;
-  padding: 0 0 10vh 1vw;
-  letter-spacing: 0.12em;
+  padding-left: 1vw;
 }
 
-#container #home #text img {
-  width: 783px;
-  height: 71px;
+#container #home #text h2 {
+  font-family: 'Pangolin', cursive;
+  font-size: 4em;
+  letter-spacing: 0.24em;
   margin-bottom: 100%;
   opacity: 0;
 }
 
+#container #home #text p {
+  font-family: 'Gaegu', cursive;
+}
+
 #container #home > span {
-  position: absolute;
   display: block;
   opacity: 0;
 }
@@ -222,6 +265,7 @@ body {
   width: 567px;
   height: 540px;
   background: url(../images/icon1.png) no-repeat;
+  position: absolute;
   left: 0;
   bottom: 0;
 }
@@ -230,8 +274,27 @@ body {
   width: 148px;
   height: 136px;
   background: url(../images/icon2.png) no-repeat;
+  position: fixed;
   right: 0;
   top: 0;
+}
+
+#About-me {
+  width: 100vw;
+  height: 100vh;
+  background: #2F4858;
+}
+
+#PhotoPolio {
+  width: 100vw;
+  height: 100vh;
+  background: #F5F0ED;
+}
+
+#Contact {
+  width: 100vw;
+  height: 100vh;
+  background: #F5F0ED;
 }
 
 @media all and (min-width: 768px) and (max-width: 1024px) {
@@ -245,8 +308,57 @@ body {
     height: 120px;
     background: url(../images/icon2.png) no-repeat 0 0/cover;
   }
-  #container #home #text img {
-    width: 600px;
+  #container #home #text {
+    font-size: 1.4em;
+  }
+}
+
+@media all and (min-width: 320px) and (max-width: 768px) {
+  #container #home > span:nth-of-type(1) {
+    width: 300px;
+    height: 300px;
+    background: url(../images/icon1.png) no-repeat 0 0/cover;
+  }
+  #container #home > span:nth-of-type(2) {
+    width: 100px;
+    height: 100px;
+    background: url(../images/icon2.png) no-repeat 0 0/cover;
+  }
+  #container #home #text {
+    font-size: 1.3em;
+    padding: 0 0 10vh 5vw;
+  }
+  #container #home #text h2 {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    letter-spacing: 0.16em;
+    line-height: 1;
+  }
+  #container #home #text p {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
   }
 }
 /*# sourceMappingURL=style.css.map */
