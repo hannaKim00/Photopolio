@@ -72,3 +72,16 @@ window.addEventListener('scroll', function(){
     header.style.color = '#2F4858';
   }
 });
+
+
+// PhotoPolio set ************
+const prve = document.querySelector('#btn div:nth-child(1)');
+const next = document.querySelector('#btn div:nth-child(2)');
+const content = document.querySelector('#contents > ul');
+
+next.addEventListener('click', () => {
+  content.style.marginLeft = '-65vw';
+});
+prve.addEventListener('click', () => {
+  content.style.marginLeft = '0';
+});

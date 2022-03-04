@@ -110,7 +110,7 @@ body {
   height: 21px;
   position: absolute;
   top: 3.8vh;
-  right: 2.3vw;
+  right: 3vw;
   -webkit-transform: translateX(0);
           transform: translateX(0);
   cursor: pointer;
@@ -148,12 +148,21 @@ body {
   background: #F5F0ED;
 }
 
+@media all and (min-width: 1024px) and (max-width: 1550px) {
+  body {
+    font-size: 15px;
+  }
+}
+
 @media all and (min-width: 768px) and (max-width: 1024px) {
   body {
     font-size: 14px;
   }
   body #header {
     height: 12vh;
+  }
+  body #header #Hamburger {
+    right: 5vw;
   }
 }
 
@@ -188,8 +197,7 @@ body {
     color: #F5F0ED;
   }
   body #header #Hamburger {
-    top: 3.0vh;
-    right: 3.8vw;
+    right: 6.5vw;
   }
   body #header #Hamburger > div {
     width: 27px;
@@ -214,14 +222,14 @@ body {
   }
 }
 
-#container #home {
+#home {
   width: 100vw;
   height: 100vh;
   background: #F5F0ED;
   opacity: 0;
 }
 
-#container #home #text {
+#home #text {
   width: 100vw;
   height: 90vh;
   display: -webkit-box;
@@ -244,7 +252,7 @@ body {
   padding-left: 1vw;
 }
 
-#container #home #text h2 {
+#home #text h2 {
   font-family: 'Pangolin', cursive;
   font-size: 4em;
   letter-spacing: 0.24em;
@@ -252,16 +260,16 @@ body {
   opacity: 0;
 }
 
-#container #home #text p {
+#home #text p {
   font-family: 'Gaegu', cursive;
 }
 
-#container #home > span {
+#home > span {
   display: block;
   opacity: 0;
 }
 
-#container #home > span:nth-of-type(1) {
+#home > span:nth-of-type(1) {
   width: 567px;
   height: 540px;
   background: url(../images/icon1.png) no-repeat;
@@ -270,31 +278,320 @@ body {
   bottom: 0;
 }
 
-#container #home > span:nth-of-type(2) {
+#home > span:nth-of-type(2) {
   width: 148px;
   height: 136px;
   background: url(../images/icon2.png) no-repeat;
   position: fixed;
   right: 0;
   top: 0;
+  z-index: 2;
 }
 
 #About-me {
   width: 100vw;
-  height: 100vh;
+  height: 100%;
   background: #2F4858;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  font-size: 1em;
+  font-weight: 300;
+  text-align: left;
+  color: #F5F0ED;
+  white-space: nowrap;
+  padding: 16vh 0;
+}
+
+#About-me > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: left;
+      -ms-flex-align: left;
+          align-items: left;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 20vw;
+  height: 73vh;
+}
+
+#About-me > div strong {
+  font-size: 1.9em;
+  font-weight: 500;
+  text-align: left;
+  color: #E5C1C5;
+  position: relative;
+  display: block;
+  margin-bottom: 3.5vh;
+}
+
+#About-me > div strong::before {
+  content: '';
+  width: 20vw;
+  height: 1px;
+  background: #F5F0ED;
+  position: absolute;
+  top: 120%;
+  left: 0;
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+}
+
+#About-me > div p, #About-me > div img {
+  margin-top: 1vh;
+}
+
+#About-me > div span {
+  font-weight: 400;
+}
+
+#About-me hr {
+  width: 1px;
+  height: 160px;
+  margin: 0 6vw;
+}
+
+#About-me #box1 {
+  text-align: center;
+}
+
+#About-me #box1 #img {
+  width: 289px;
+  height: 364px;
+  background: url(../images/img.png) no-repeat;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  position: relative;
+}
+
+#About-me #box1 #img::before,
+#About-me #box1 #img::after {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  -webkit-transform: translate(0, 0);
+          transform: translate(0, 0);
+  width: 306px;
+  height: 385px;
+  border: 1px solid rgba(245, 240, 237, 0.6);
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 144px;
+}
+
+#About-me #box1 #img::before {
+  -webkit-transform: rotate(30deg);
+          transform: rotate(30deg);
+}
+
+#About-me #box1 #img::after {
+  -webkit-transform: rotate(-30deg);
+          transform: rotate(-30deg);
+}
+
+#About-me #box1 #aboutme > h2 {
+  font-size: 1.7em;
+  font-weight: 400;
+}
+
+#About-me #box1 #aboutme > p {
+  margin-top: 2vh;
+}
+
+#About-me #box2 {
+  margin-right: 8vw;
+}
+
+#About-me #box3 #skill, #About-me #box3 #hobby {
+  text-align: center;
+}
+
+#About-me #box3 #skill img, #About-me #box3 #hobby img {
+  margin-right: 2vw;
+}
+
+#About-me #box3 #skill img:nth-of-type(3n), #About-me #box3 #hobby img:nth-of-type(3n) {
+  margin-right: 0;
 }
 
 #PhotoPolio {
   width: 100vw;
   height: 100vh;
   background: #F5F0ED;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  border: 1px solid black;
+  position: relative;
+  padding: 16vh 0;
+}
+
+#PhotoPolio #btn > div {
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  top: 46%;
+  left: 15vw;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  border: 1px solid #2F4858;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  text-indent: -9999em;
+  cursor: pointer;
+}
+
+#PhotoPolio #btn > div:nth-child(1) {
+  border-top: 0;
+  border-right: 0;
+}
+
+#PhotoPolio #btn > div:nth-child(2) {
+  position: absolute;
+  top: 46%;
+  left: 85vw;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  border-left: 0;
+  border-bottom: 0;
+}
+
+#PhotoPolio #contents {
+  width: 65vw;
+  overflow: hidden;
+}
+
+#PhotoPolio #contents ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  width: 130vw;
+  -webkit-transition: 1s;
+  transition: 1s;
+}
+
+#PhotoPolio #contents ul li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  width: 65vw;
+}
+
+#PhotoPolio #contents ul li #text {
+  font-size: 1em;
+  font-weight: nowrap;
+  text-align: center;
+  color: #2F4858;
+}
+
+#PhotoPolio #contents ul li #text > h2 {
+  font-size: 1.25em;
+  font-weight: 500;
+  margin-bottom: 5VH;
+  position: relative;
+}
+
+#PhotoPolio #contents ul li #text > h2::after {
+  content: '';
+  width: 10vw;
+  height: 1px;
+  background: #000;
+  position: absolute;
+  top: 160%;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+
+#PhotoPolio #contents ul li #text p {
+  margin-bottom: 1vh;
+}
+
+#PhotoPolio #contents ul li #text p > span {
+  font-weight: 500;
 }
 
 #Contact {
   width: 100vw;
   height: 100vh;
   background: #F5F0ED;
+}
+
+@media all and (min-width: 768px) and (max-width: 1550px) {
+  #About-me {
+    padding: 21vh 0;
+  }
+  #About-me > div {
+    height: 65vh;
+  }
+  #About-me #box1 #img {
+    width: 250px;
+    height: 300px;
+    background: url(../images/img.png) no-repeat 0 0/cover;
+  }
+  #About-me #box1 #img::before,
+  #About-me #box1 #img::after {
+    width: 248px;
+    height: 312px;
+    top: -6px;
+    left: 0;
+  }
+  #About-me hr {
+    display: none;
+  }
+  #About-me #box2 {
+    margin: 0 12vw;
+  }
 }
 
 @media all and (min-width: 768px) and (max-width: 1024px) {
@@ -310,6 +607,57 @@ body {
   }
   #container #home #text {
     font-size: 1.4em;
+  }
+  #About-me {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    font-size: 1.1em;
+    padding: 15vh 0;
+  }
+  #About-me > div {
+    width: 30%;
+  }
+  #About-me > div strong::before {
+    width: 31vw;
+  }
+  #About-me #box1 {
+    width: 100%;
+    height: 46vh;
+  }
+  #About-me #box1 #aboutme {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    width: 100vw;
+  }
+  #About-me #box1 #aboutme > h2 {
+    width: 100%;
+  }
+  #About-me #box1 #aboutme > p {
+    width: 27%;
+    margin-top: 1vh;
+  }
+  #About-me hr {
+    width: 100%;
+    height: 1px;
+    display: block;
+    margin: 10vh 40vw;
+  }
+  #About-me #box2 {
+    margin: 0;
+    margin-right: 14vw;
   }
 }
 
@@ -359,6 +707,69 @@ body {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
+  }
+  #About-me {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    padding: 12vh 0;
+  }
+  #About-me > div {
+    width: 50%;
+  }
+  #About-me div strong::before {
+    width: 100%;
+  }
+  #About-me #box1 {
+    width: 100%;
+    height: 60vh;
+  }
+  #About-me #box1 #img {
+    width: 250px;
+    height: 300px;
+    background: url(../images/img.png) no-repeat 0 0/cover;
+  }
+  #About-me #box1 #img::before,
+  #About-me #box1 #img::after {
+    width: 248px;
+    height: 312px;
+    top: -6px;
+    left: 0;
+  }
+  #About-me hr {
+    width: 149px;
+    height: 1px;
+    margin: 6vh 0;
+  }
+  #About-me #box2 {
+    margin-right: 0;
+    height: 55vh;
+    margin-bottom: 6vh;
+  }
+  #About-me #box3 {
+    height: 61vh;
+  }
+}
+
+@media all and (min-width: 320px) and (max-width: 500px) {
+  #About-me > div {
+    width: 67vw;
+  }
+  #About-me #box1 {
+    height: 52vh;
+  }
+  #About-me #box1 #img {
+    width: 190px;
+    height: 240px;
+    background: url(../images/img.png) no-repeat 0 0/cover;
+  }
+  #About-me #box1 #img::before,
+  #About-me #box1 #img::after {
+    width: 197px;
+    height: 248px;
+    top: -6px;
+    left: 0;
   }
 }
 /*# sourceMappingURL=style.css.map */

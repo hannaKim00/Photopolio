@@ -147,6 +147,13 @@ body {
 
 // @media ******************************
 // tablet
+@media all and (min-width:1024px) and (max-width:1550px) {
+  // About-me
+  body {
+    font-size: 15px;
+  }
+}
+
 @media all and (min-width:768px) and (max-width:1024px) {
   body {
     font-size: 14px;
