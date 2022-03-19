@@ -10,6 +10,12 @@ $color3 : #E5C1C5;
   padding: 0;
   box-sizing: border-box;
 }
+body {
+  width: 100vw;
+  overflow-x: hidden;
+  color: $color1;
+  font: 16px 'IBM Plex Sans KR', sans-serif;
+}
 ul {
   list-style: none;
 }
@@ -17,11 +23,8 @@ a {
   color: #282828;
   text-decoration: none;
 }
-body {
-  width: 100vw;
-  overflow-x: hidden;
-  color: $color1;
-  font: 16px 'IBM Plex Sans KR', sans-serif;
+i {
+  font-style: normal;
 }
 
 // mixin set *************************
@@ -65,6 +68,12 @@ body {
   left: $left;
   transform: $translate;
 }
+@mixin absolute-bottom-left($bottom, $left, $translate) {
+  position: absolute;
+  bottom: $bottom;
+  left: $left;
+  transform: $translate;
+}
 @mixin absolute-top-right($top, $right, $translate) {
   position: absolute;
   top: $top;
@@ -84,7 +93,7 @@ body {
 
 
 // header set ***************
-#header {
+header {
   @include size-set(100vw, 10vh);
   @include flex-set(space-between, center, row);
   @include font-set(1.6em, 400, center, $color1);
@@ -157,7 +166,7 @@ body {
 @media all and (min-width:768px) and (max-width:1024px) {
   body {
     font-size: 14px;
-    #header {
+    header {
       height: 12vh;
 
       #Hamburger {
@@ -172,8 +181,9 @@ body {
   body {
     font-size: 13px;
 
-    #header {
+    header {
       height: 10vh;
+
       ul {
         @include absolute-top-right(0, -45vw, translateY(0));
         @include size-set-color(100vw, 100vh, $color3);

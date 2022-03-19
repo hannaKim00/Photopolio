@@ -10,9 +10,11 @@
 }
 
 // home style set **********************
+#container {
+  overflow: hidden;
+}
 #home {
   @include size-set-color(100vw, 100vh, $color2);
-  opacity: 0;
 
   #text {
     @include size-set(100vw, 90vh);
@@ -24,12 +26,11 @@
       font-family: 'Pangolin', cursive;
       font-size: 4em;
       letter-spacing: 0.24em;
-      margin-bottom: 100%;
-      opacity: 0;
     }
 
     p {
       font-family: 'Gaegu', cursive;
+      white-space: nowrap;
     }
   }
 
@@ -55,6 +56,7 @@
   }
 }
 
+
 // About-me style set **********************
 #About-me {
   @include size-set-color(100vw, 100%, $color1);
@@ -65,7 +67,8 @@
 
   & > div {
     @include flex-set(space-between, left, column);
-    @include size-set(20vw, 73vh);
+    @include size-set(20vw, 67vh);
+    min-height: 650px;
 
     strong {
       @include font-set(1.9em, 500, left, $color3);
@@ -95,6 +98,8 @@
 
   #box1 {
     text-align: center;
+    height: 67vh;
+    min-height: 650px;
     
     #img {
       @include size-set(289px, 364px);
@@ -151,29 +156,40 @@
 
 // PhotoPolio style set **********************
 #PhotoPolio {
-  @include size-set-color(100vw, 100vh, $color2);
+  @include size-set-color(100vw, 100%, $color2);
   @include flex-set(center, center, row);
-  border: 1px solid black;
+  border-bottom: 1px solid #2F48584D;
   position: relative;
-  padding: 16vh 0;
-  // z-index: -2;
+  padding: 21vh 0;
 
   #btn {
     & > div {
       @include size-set(80px, 80px);
-      @include absolute-top-left(46%, 15vw, translateY(-50%));
-      border: 1px solid #2F4858;
-      transform: rotate(45deg);
+      border: 1px solid #2F485880;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%) rotate(45deg);
       text-indent: -9999em;
       cursor: pointer;
+      z-index: 10;
     }
     & > div:nth-child(1) {
+      left: 10vw;
       border-top: 0;
       border-right: 0;
     }
     & > div:nth-child(2) {
-      @include absolute-top-left(46%, 85vw, translateY(-50%));
-      transform: rotate(45deg);
+      right: 10vw;
+      border-left: 0;
+      border-bottom: 0;
+    }
+    & > div:nth-child(1):hover {
+      border: 1px solid #2F4858;
+      border-top: 0;
+      border-right: 0;
+    }
+    & > div:nth-child(2):hover {
+      border: 1px solid #2F4858;
       border-left: 0;
       border-bottom: 0;
     }
@@ -182,34 +198,41 @@
   #contents {
     width: 65vw;
     overflow: hidden;
+
+    ul.transition {
+      transition: .5s;
+    }
     ul{
       @include flex-set(center, center, row);
-      width: 130vw;
-      transition: 1s;
-
+      
       li {
-        @include flex-set(center, center, row);
         width: 65vw;
         
-        #text {
-          @include font-set(1em, nowrap, center, $color1);
-  
-          & > h2 {
-            font-size: 1.25em;
-            font-weight: 500;
-            margin-bottom: 5VH;
-            position: relative;
-          }
-          & > h2::after {
-            content: '';
-            @include size-set-color(10vw, 1px, #000);
-            @include absolute-top-left(160%, 50%, translateX(-50%));
-          }
-  
-          p {
-            margin-bottom: 1vh;
-            & > span {
+        a {
+          @include flex-set(center, center, row);
+
+          #text {
+            width: 40%;
+            @include font-set(1.05em, nowrap, center, $color1);
+            word-break: keep-all;
+            
+            & > h2 {
+              font-size: 1.25em;
               font-weight: 500;
+              margin-bottom: 5VH;
+              position: relative;
+            }
+            & > h2::after {
+              content: '';
+              @include size-set-color(10vw, 1px, #000);
+              @include absolute-top-left(160%, 50%, translateX(-50%));
+            }
+    
+            p {
+              margin-bottom: 1vh;
+              & > span {
+                font-weight: 500;
+              }
             }
           }
         }
@@ -221,206 +244,81 @@
 
 // Contact style set **********************
 #Contact {
-  @include size-set-color(100vw, 100vh, $color2);
-
-}
-
-
-
-
-
-// tablet
-@media all and (min-width:768px) and (max-width:1550px) {
-  // About-me
-  #About-me {
-    padding: 21vh 0;
-
-    & > div {
-      height: 65vh;
-    }
-
-    #box1 #img {
-      @include size-set(250px, 300px);
-      background: url(../images/img.png) no-repeat 0 0 / cover;
-    }
-    #box1 #img::before,
-    #box1 #img::after {
-      @include size-set(248px, 312px);
-      top: -6px;
-      left: 0;
-    }
-
-    hr {
-      display: none;
-    }
-
-    #box2 {
-      margin: 0 12vw;
-    }
-  }
-}
-
-@media all and (min-width:768px) and (max-width:1024px) {
-  // home
-  #container #home > span:nth-of-type(1) {
-    width: 400px;
-    height: 400px;
-    background: url(../images/icon1.png) no-repeat 0 0 / cover;
-  }
-  #container #home > span:nth-of-type(2) {
-    width: 120px;
-    height: 120px;
-    background: url(../images/icon2.png) no-repeat 0 0 / cover;
-  }
-  #container #home #text {
-    font-size: 1.4em;
-  }
-
-  //About-me
-  #About-me {
-    flex-wrap: wrap;
-    font-size: 1.1em;
-    padding: 15vh 0;
-
-    & > div {
-      width: 30%;
-
-      strong::before {
-        width: 31vw;
-      }
-    }
-
-    #box1 {
-      @include size-set(100%, 46vh);
-
-      #aboutme {
-        @include flex-set(center, center, row);
-        flex-wrap: wrap;
-        width: 100vw;
-        
-        
-        & > h2 {
-          width: 100%;
-        }
-        & > p {
-          width: 27%;
-          margin-top: 1vh;
-        }
-      }
-    }
-
-    hr {
-      @include size-set(100%, 1px);
-      display: block;
-      margin: 10vh 40vw;
-    }
-
-    #box2 {
-      margin: 0;
-      margin-right: 14vw;
-    }
-  }
-}
-
-
-// mobile
-@media all and (min-width:320px) and (max-width:768px) {
-  // home
-  #container #home {
-    & > span:nth-of-type(1) {
-      width: 300px;
-      height: 300px;
-      background: url(../images/icon1.png) no-repeat 0 0 / cover;
-    }
-    & > span:nth-of-type(2) {
-      width: 100px;
-      height: 100px;
-      background: url(../images/icon2.png) no-repeat 0 0 / cover;
-    }
-
-    #text {
-      font-size: 1.3em;
-      padding: 0 0 10vh 5vw;
+  @include size-set-color(100vw, 70vh, $color2);
+  @include flex-set(center, center, row);
+  position: relative;
   
-      h2 {
-          @include flex-set(center, center, column);
-          letter-spacing: 0.16em;
-          line-height: 1;
-      }
+  #bg {
+    @include size-set(100vw, 480px);
+    background: url(../images/bg-icon.png) no-repeat 100% 100% / cover;
+    @include absolute-bottom-left(0, 0, translateY(0));
+    opacity: 0;
+  }
 
+  & > div:nth-child(2) {
+    @include font-set(1.1em, 500, center, $color1);
+    @include flex-set(center, center, column);
+    text-align: center;
+    position: relative;
+
+    #title {
+      margin-bottom: 8vh;
+      strong {
+        font-size: 1.25em;
+        font-weight: 500;
+
+        i {
+          display: block;
+        }
+        span {
+          position: relative;
+        }
+        span::before,
+        span::after {
+          content: '';
+          @include size-set-color(5px, 5px, #B1D2B8);
+          @include absolute-top-left(-5px, 6px, translateX(0));
+          border-radius: 50%;
+        }
+        span::after {
+          left: 26px;
+        }
+        span:nth-of-type(2)::before,
+        span:nth-of-type(2)::after {
+          background: #E5C1C5;
+        } 
+      }
+    }
+
+    & > img {
+      margin: 5vh 0 4vh;
+    }
+
+    #email {
+      font-weight: 400;
+      width: 275px;
+      
+      a{
+        color: $color1;
+      }
       p {
-          @include flex-set(center, center, column);
+        text-align: left;
+        & > span {
+          @include size-set(30px, 30px);
+          display: inline-block;
+          text-indent: -9999em;
+          margin-right: 2.2vw;
+        }
       }
-    }
-  }
-
-  // About-me
-  #About-me {
-    flex-direction: column;
-    padding: 12vh 0;
-
-    & > div {
-      width: 50%;
-    }
-
-    div strong::before {
-      width: 100%;
-    }
-
-    #box1 {
-      width: 100%;
-      height: 60vh;
-
-      #img {
-        @include size-set(250px, 300px);
-        background: url(../images/img.png) no-repeat 0 0 / cover;
+      #kakaotalk span {
+        background: url(../images/OpenKakaotalk.png) no-repeat;
+        margin-bottom: 3vh;
       }
-
-      #img::before,
-      #img::after {
-        @include size-set(248px, 312px);
-        top: -6px;
-        left: 0;
-      }
-    }
-
-
-    hr {
-      @include size-set(149px, 1px);
-      margin: 6vh 0;
-    }
-
-    #box2 {
-      margin-right: 0;
-      height: 55vh;
-      margin-bottom: 6vh;
-    }
-
-    #box3 {
-      height: 61vh;
-    }
-  }
-} 
-
-@media all and (min-width:320px) and (max-width:500px) {
-  #About-me {
-    & > div {
-      width: 67vw;
-    }
-    #box1 {
-      height: 52vh;
-
-      #img {
-        @include size-set(190px, 240px);
-        background: url(../images/img.png) no-repeat 0 0 / cover;
-      }
-
-      #img::before,
-      #img::after {
-        @include size-set(197px, 248px);
-        top: -6px;
-        left: 0;
+      #gmail span {
+        background: url(../images/email.png) no-repeat;
       }
     }
   }
 }
+
+@import "media.scss";

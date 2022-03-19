@@ -1,17 +1,13 @@
-const home = document.querySelector('#home');
-const photopolio = document.querySelector('#text h2');
+AOS.init({});
+
 const icon = document.querySelectorAll('#home > span');
 
 window.addEventListener('load', ( )=> {
-  opacityTransition(home, '1', '1s');
-  photopolio.style.marginBottom = '4vh';
-  opacityTransition(photopolio, '1', '1.5s');
   opacityTransitionDelay(icon[0], '1', '2s', '1s');
-  opacityTransitionDelay(icon[1], '1', '2s', '1.5s');
+  opacityTransitionDelay(icon[1], '1', '2s', '1s');
 });
 
-
-// logo animationDelay
+// logo 애니메이션 Delay
 const logo = document.querySelectorAll('#logo > span');
 
 for(i = 0; i < logo.length; i++) {
@@ -27,8 +23,11 @@ for(i = 0; i < logo.length; i++) {
 // 햄버거 클릭시 nav가 나타남
 const botton = document.querySelector('#Hamburger');
 const bottons = document.querySelectorAll('#Hamburger > div');
-const ul = document.querySelector('#header ul');
+const ul = document.querySelector('header ul');
 
+window.addEventListener('load', () => {
+  ul.style.width = '0';
+})
 let on = true;
 botton.addEventListener('click', () => {
   if(on) {
@@ -47,41 +46,100 @@ botton.addEventListener('click', () => {
 });
 
 
-const header = document.querySelector('#header');
-const menu = document.querySelectorAll('#header ul li');
-const section = document.querySelectorAll('#container > section');
-// 클릭한 메뉴의 section으로 이동
-for(i = 0; i < menu.length; i++) {
-  menu[i].addEventListener('click', function(event) {
-    if(event.target === menu[0]) {
-      window.scroll({top:section[0].offsetTop, behavior:'smooth'});
-    } else if(event.target === menu[1]) {
-      window.scroll({top:section[1].offsetTop, behavior:'smooth'});
-    } else if(event.target === menu[2]) {
-      window.scroll({top:section[2].offsetTop, behavior:'smooth'});
-    } else {
-      window.scroll({top:section[3].offsetTop, behavior:'smooth'});
-    }
-  });
-};
-// 2번째 section에서 글자색 변경
-window.addEventListener('scroll', function(){
-  if(window.scrollY >= section[1].offsetTop && window.scrollY < section[2].offsetTop) {
-    header.style.color = '#F5F0ED';
-  } else {
-    header.style.color = '#2F4858';
-  }
-});
-
-
 // PhotoPolio set ************
-const prve = document.querySelector('#btn div:nth-child(1)');
-const next = document.querySelector('#btn div:nth-child(2)');
-const content = document.querySelector('#contents > ul');
+// 무한 슬라이더
+const prve = document.querySelector('#btn div:nth-child(1)'),
+      next = document.querySelector('#btn div:nth-child(2)'),
+      slides = document.querySelector('#contents > ul'),
+      slide = document.querySelectorAll('#contents > ul li'),
+      slideCont = slide.length,
+      slideWidth = '65';
+let currentIdx = 0;
+      
+makeCloneset();
+
+function makeCloneset() {
+  // ul의 뒤로 복제
+  for(i = 0; i < slideCont; i++) {
+    const cloneSlide = slide[i].cloneNode(true);
+    makeClone();
+    function makeClone() {
+      // 해상도가 930px 이상이면 복제
+      if (matchMedia("screen and (min-width:931px)").matches) { 
+        slides.appendChild(cloneSlide);
+      } else {
+        cloneSlide.remove();
+      }
+    };
+    window.addEventListener('resize', function() {
+      makeClone();
+    });
+  }
+
+  // ul 앞으로 복제
+  for(i = slideCont-1; i >= 0; i--) {
+    const cloneSlide = slide[i].cloneNode(true);
+    makeClone();
+    function makeClone() {
+      // 해상도가 930px 이상이면 복제
+      if (matchMedia("screen and (min-width:931px)").matches) { 
+        slides.prepend(cloneSlide);
+      } else {
+        cloneSlide.remove();
+      }
+    };
+    window.addEventListener('resize', function() {
+      makeClone();
+    });
+  }
+};
+updateWidth();
+setInitialPos();
+setTimeout(() => {
+  slides.classList.add('transition');
+}, 100);
+
+// 복제된 슬라이더 갯수 만큼 ul의 너비를 정해줌
+function updateWidth() {
+  const currentSlide = document.querySelectorAll('#contents > ul li'),
+        newSlideCount = currentSlide.length;
+        
+  slides.style.width = slideWidth * newSlideCount + 'vw';
+};
+
+// 복제된 자식이 아닌 원래의 자식의 위치로 이동
+function setInitialPos() {
+  if (matchMedia("screen and (max-width:930px)").matches) { 
+    slides.style.transform = 'translateX(' + 0 + ')';
+    slides.style.width = slideWidth + 'vw';
+  } else {
+    const translateValue = -slideWidth * slideCont + 'vw';
+    slides.style.transform = 'translateX(' + translateValue + ')';
+    updateWidth();
+  }
+}
 
 next.addEventListener('click', () => {
-  content.style.marginLeft = '-65vw';
+  moveSlide(currentIdx + 1);
 });
 prve.addEventListener('click', () => {
-  content.style.marginLeft = '0';
+  moveSlide(currentIdx - 1);
+});
+function moveSlide(num) {
+  slides.style.marginLeft = -num * slideWidth + 'vw';
+  currentIdx = num;
+  if(currentIdx === slideCont || currentIdx === -slideCont) {
+    setTimeout(() => {
+      slides.classList.remove('transition');
+      slides.style.marginLeft = '0';
+      currentIdx = 0;
+    }, 1000);
+    setTimeout(() => {
+      slides.classList.add('transition');
+    }, 1100);
+  }
+};
+
+window.addEventListener('resize', function() {
+  setInitialPos();
 });

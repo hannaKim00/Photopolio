@@ -6,6 +6,13 @@
           box-sizing: border-box;
 }
 
+body {
+  width: 100vw;
+  overflow-x: hidden;
+  color: #2F4858;
+  font: 16px 'IBM Plex Sans KR', sans-serif;
+}
+
 ul {
   list-style: none;
 }
@@ -15,14 +22,11 @@ a {
   text-decoration: none;
 }
 
-body {
-  width: 100vw;
-  overflow-x: hidden;
-  color: #2F4858;
-  font: 16px 'IBM Plex Sans KR', sans-serif;
+i {
+  font-style: normal;
 }
 
-#header {
+header {
   width: 100vw;
   height: 10vh;
   display: -webkit-box;
@@ -48,7 +52,7 @@ body {
   padding: 0 150px 0 5vw;
 }
 
-#header #logo {
+header #logo {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -65,13 +69,13 @@ body {
   font-weight: 700;
 }
 
-#header #logo > span {
+header #logo > span {
   position: relative;
   -webkit-animation: logo .8s alternate infinite;
           animation: logo .8s alternate infinite;
 }
 
-#header ul {
+header ul {
   width: 0;
   overflow: hidden;
   -webkit-transition: .7s;
@@ -91,21 +95,21 @@ body {
           flex-direction: row;
 }
 
-#header ul li {
+header ul li {
   margin: 0 1.5vw;
   white-space: nowrap;
   cursor: pointer;
 }
 
-#header ul li:hover {
+header ul li:hover {
   color: #E5C1C5;
 }
 
-#header ul li.on {
+header ul li.on {
   font-weight: 700;
 }
 
-#header #Hamburger {
+header #Hamburger {
   width: 30px;
   height: 21px;
   position: absolute;
@@ -117,7 +121,7 @@ body {
   z-index: 10;
 }
 
-#header #Hamburger > div {
+header #Hamburger > div {
   width: 30px;
   height: 3px;
   background: #2F4858;
@@ -128,7 +132,7 @@ body {
           transform: translateY(0);
 }
 
-#header #Hamburger > div:nth-child(2) {
+header #Hamburger > div:nth-child(2) {
   position: absolute;
   top: 50%;
   left: 0;
@@ -136,7 +140,7 @@ body {
           transform: translateY(-50%);
 }
 
-#header #Hamburger > div:nth-child(3) {
+header #Hamburger > div:nth-child(3) {
   position: absolute;
   top: calc(100% - 3px);
   left: 0;
@@ -144,7 +148,7 @@ body {
           transform: translateY(0);
 }
 
-#header #Hamburger:hover > div {
+header #Hamburger:hover > div {
   background: #F5F0ED;
 }
 
@@ -158,10 +162,10 @@ body {
   body {
     font-size: 14px;
   }
-  body #header {
+  body header {
     height: 12vh;
   }
-  body #header #Hamburger {
+  body header #Hamburger {
     right: 5vw;
   }
 }
@@ -170,10 +174,10 @@ body {
   body {
     font-size: 13px;
   }
-  body #header {
+  body header {
     height: 10vh;
   }
-  body #header ul {
+  body header ul {
     position: absolute;
     top: 0;
     right: -45vw;
@@ -190,16 +194,16 @@ body {
     padding-right: 42vw;
     font-size: 1.2em;
   }
-  body #header ul li {
+  body header ul li {
     margin-bottom: 3vh;
   }
-  body #header ul li:hover {
+  body header ul li:hover {
     color: #F5F0ED;
   }
-  body #header #Hamburger {
+  body header #Hamburger {
     right: 6.5vw;
   }
-  body #header #Hamburger > div {
+  body header #Hamburger > div {
     width: 27px;
   }
 }
@@ -222,11 +226,14 @@ body {
   }
 }
 
+#container {
+  overflow: hidden;
+}
+
 #home {
   width: 100vw;
   height: 100vh;
   background: #F5F0ED;
-  opacity: 0;
 }
 
 #home #text {
@@ -256,12 +263,11 @@ body {
   font-family: 'Pangolin', cursive;
   font-size: 4em;
   letter-spacing: 0.24em;
-  margin-bottom: 100%;
-  opacity: 0;
 }
 
 #home #text p {
   font-family: 'Gaegu', cursive;
+  white-space: nowrap;
 }
 
 #home > span {
@@ -328,7 +334,8 @@ body {
       -ms-flex-direction: column;
           flex-direction: column;
   width: 20vw;
-  height: 73vh;
+  height: 67vh;
+  min-height: 650px;
 }
 
 #About-me > div strong {
@@ -369,6 +376,8 @@ body {
 
 #About-me #box1 {
   text-align: center;
+  height: 67vh;
+  min-height: 650px;
 }
 
 #About-me #box1 #img {
@@ -434,7 +443,7 @@ body {
 
 #PhotoPolio {
   width: 100vw;
-  height: 100vh;
+  height: 100%;
   background: #F5F0ED;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -449,39 +458,44 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  border: 1px solid black;
+  border-bottom: 1px solid #2F48584D;
   position: relative;
-  padding: 16vh 0;
+  padding: 21vh 0;
 }
 
 #PhotoPolio #btn > div {
   width: 80px;
   height: 80px;
+  border: 1px solid #2F485880;
   position: absolute;
-  top: 46%;
-  left: 15vw;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
-  border: 1px solid #2F4858;
-  -webkit-transform: rotate(45deg);
-          transform: rotate(45deg);
+  top: 50%;
+  -webkit-transform: translateY(-50%) rotate(45deg);
+          transform: translateY(-50%) rotate(45deg);
   text-indent: -9999em;
   cursor: pointer;
+  z-index: 10;
 }
 
 #PhotoPolio #btn > div:nth-child(1) {
+  left: 10vw;
   border-top: 0;
   border-right: 0;
 }
 
 #PhotoPolio #btn > div:nth-child(2) {
-  position: absolute;
-  top: 46%;
-  left: 85vw;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
-  -webkit-transform: rotate(45deg);
-          transform: rotate(45deg);
+  right: 10vw;
+  border-left: 0;
+  border-bottom: 0;
+}
+
+#PhotoPolio #btn > div:nth-child(1):hover {
+  border: 1px solid #2F4858;
+  border-top: 0;
+  border-right: 0;
+}
+
+#PhotoPolio #btn > div:nth-child(2):hover {
+  border: 1px solid #2F4858;
   border-left: 0;
   border-bottom: 0;
 }
@@ -489,6 +503,11 @@ body {
 #PhotoPolio #contents {
   width: 65vw;
   overflow: hidden;
+}
+
+#PhotoPolio #contents ul.transition {
+  -webkit-transition: .5s;
+  transition: .5s;
 }
 
 #PhotoPolio #contents ul {
@@ -505,12 +524,13 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  width: 130vw;
-  -webkit-transition: 1s;
-  transition: 1s;
 }
 
 #PhotoPolio #contents ul li {
+  width: 65vw;
+}
+
+#PhotoPolio #contents ul li a {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -524,24 +544,25 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  width: 65vw;
 }
 
-#PhotoPolio #contents ul li #text {
-  font-size: 1em;
+#PhotoPolio #contents ul li a #text {
+  width: 40%;
+  font-size: 1.05em;
   font-weight: nowrap;
   text-align: center;
   color: #2F4858;
+  word-break: keep-all;
 }
 
-#PhotoPolio #contents ul li #text > h2 {
+#PhotoPolio #contents ul li a #text > h2 {
   font-size: 1.25em;
   font-weight: 500;
   margin-bottom: 5VH;
   position: relative;
 }
 
-#PhotoPolio #contents ul li #text > h2::after {
+#PhotoPolio #contents ul li a #text > h2::after {
   content: '';
   width: 10vw;
   height: 1px;
@@ -553,26 +574,155 @@ body {
           transform: translateX(-50%);
 }
 
-#PhotoPolio #contents ul li #text p {
+#PhotoPolio #contents ul li a #text p {
   margin-bottom: 1vh;
 }
 
-#PhotoPolio #contents ul li #text p > span {
+#PhotoPolio #contents ul li a #text p > span {
   font-weight: 500;
 }
 
 #Contact {
   width: 100vw;
-  height: 100vh;
+  height: 70vh;
   background: #F5F0ED;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  position: relative;
 }
 
-@media all and (min-width: 768px) and (max-width: 1550px) {
+#Contact #bg {
+  width: 100vw;
+  height: 480px;
+  background: url(../images/bg-icon.png) no-repeat 100% 100%/cover;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+  opacity: 0;
+}
+
+#Contact > div:nth-child(2) {
+  font-size: 1.1em;
+  font-weight: 500;
+  text-align: center;
+  color: #2F4858;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-align: center;
+  position: relative;
+}
+
+#Contact > div:nth-child(2) #title {
+  margin-bottom: 8vh;
+}
+
+#Contact > div:nth-child(2) #title strong {
+  font-size: 1.25em;
+  font-weight: 500;
+}
+
+#Contact > div:nth-child(2) #title strong i {
+  display: block;
+}
+
+#Contact > div:nth-child(2) #title strong span {
+  position: relative;
+}
+
+#Contact > div:nth-child(2) #title strong span::before,
+#Contact > div:nth-child(2) #title strong span::after {
+  content: '';
+  width: 5px;
+  height: 5px;
+  background: #B1D2B8;
+  position: absolute;
+  top: -5px;
+  left: 6px;
+  -webkit-transform: translateX(0);
+          transform: translateX(0);
+  border-radius: 50%;
+}
+
+#Contact > div:nth-child(2) #title strong span::after {
+  left: 26px;
+}
+
+#Contact > div:nth-child(2) #title strong span:nth-of-type(2)::before,
+#Contact > div:nth-child(2) #title strong span:nth-of-type(2)::after {
+  background: #E5C1C5;
+}
+
+#Contact > div:nth-child(2) > img {
+  margin: 5vh 0 4vh;
+}
+
+#Contact > div:nth-child(2) #email {
+  font-weight: 400;
+  width: 275px;
+}
+
+#Contact > div:nth-child(2) #email a {
+  color: #2F4858;
+}
+
+#Contact > div:nth-child(2) #email p {
+  text-align: left;
+}
+
+#Contact > div:nth-child(2) #email p > span {
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+  text-indent: -9999em;
+  margin-right: 2.2vw;
+}
+
+#Contact > div:nth-child(2) #email #kakaotalk span {
+  background: url(../images/OpenKakaotalk.png) no-repeat;
+  margin-bottom: 3vh;
+}
+
+#Contact > div:nth-child(2) #email #gmail span {
+  background: url(../images/email.png) no-repeat;
+}
+
+@media all and (max-width: 1550px) {
   #About-me {
-    padding: 21vh 0;
+    padding: 18vh 0;
   }
   #About-me > div {
-    height: 65vh;
+    height: 66vh;
+    min-height: 580px;
+    max-height: 630px;
+  }
+  #About-me #box1 {
+    height: 66vh;
+    min-height: 570px;
+    max-height: 580px;
   }
   #About-me #box1 #img {
     width: 250px;
@@ -586,15 +736,38 @@ body {
     top: -6px;
     left: 0;
   }
+  #About-me #box1 #aboutme h2 {
+    font-size: 1.5em;
+  }
   #About-me hr {
     display: none;
   }
   #About-me #box2 {
     margin: 0 12vw;
   }
+  #PhotoPolio {
+    padding: 6vh 0 9vh 0;
+  }
+  #PhotoPolio #contents ul li a {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  #PhotoPolio #contents ul li a #text {
+    width: 60%;
+    margin-top: 3vh;
+    font-size: 1.1em;
+  }
+  #Contact > div:nth-child(2) #title strong span::after {
+    left: 24px;
+  }
+  #Contact > div:nth-child(2) #email {
+    width: 254px;
+  }
 }
 
-@media all and (min-width: 768px) and (max-width: 1024px) {
+@media all and (max-width: 1024px) {
   #container #home > span:nth-of-type(1) {
     width: 400px;
     height: 400px;
@@ -616,13 +789,16 @@ body {
   }
   #About-me > div {
     width: 30%;
+    height: 65vh;
+    min-height: 570px;
   }
   #About-me > div strong::before {
     width: 31vw;
   }
   #About-me #box1 {
     width: 100%;
-    height: 46vh;
+    height: 45vh;
+    min-height: 440px;
   }
   #About-me #box1 #aboutme {
     display: -webkit-box;
@@ -659,9 +835,46 @@ body {
     margin: 0;
     margin-right: 14vw;
   }
+  #PhotoPolio #contents ul li a #text {
+    width: 80%;
+  }
+  #Contact > div:nth-child(2) img {
+    margin-top: 3vh;
+  }
+  #Contact > div:nth-child(2) #email {
+    width: 230px;
+    margin-left: 2vw;
+  }
 }
 
-@media all and (min-width: 320px) and (max-width: 768px) {
+@media all and (max-width: 930px) {
+  #PhotoPolio #btn {
+    display: none;
+  }
+  #PhotoPolio #contents ul {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  #PhotoPolio #contents ul li a img {
+    width: 100%;
+  }
+  #PhotoPolio #contents ul li ~ li {
+    margin-top: 6vh;
+  }
+  #Contact > div:nth-child(2) #title strong span::after {
+    left: 22px;
+  }
+  #Contact > div:nth-child(2) img {
+    margin-top: 2vh;
+  }
+  #Contact > div:nth-child(2) #email {
+    margin-left: 4vw;
+  }
+}
+
+@media all and (max-width: 768px) {
   #container #home > span:nth-of-type(1) {
     width: 300px;
     height: 300px;
@@ -674,7 +887,7 @@ body {
   }
   #container #home #text {
     font-size: 1.3em;
-    padding: 0 0 10vh 5vw;
+    padding: 60px 0 0 5vw;
   }
   #container #home #text h2 {
     display: -webkit-box;
@@ -717,25 +930,29 @@ body {
   }
   #About-me > div {
     width: 50%;
+    height: 60vh;
+    min-height: 530px;
+    text-align: center;
+  }
+  #About-me div strong {
+    text-align: center;
   }
   #About-me div strong::before {
     width: 100%;
   }
   #About-me #box1 {
     width: 100%;
-    height: 60vh;
+    height: 58vh;
+    min-height: 505px;
   }
-  #About-me #box1 #img {
-    width: 250px;
-    height: 300px;
-    background: url(../images/img.png) no-repeat 0 0/cover;
+  #About-me #box1 #aboutme {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
   }
-  #About-me #box1 #img::before,
-  #About-me #box1 #img::after {
-    width: 248px;
-    height: 312px;
-    top: -6px;
-    left: 0;
+  #About-me #box1 #aboutme > p {
+    width: 100%;
   }
   #About-me hr {
     width: 149px;
@@ -744,20 +961,33 @@ body {
   }
   #About-me #box2 {
     margin-right: 0;
-    height: 55vh;
-    margin-bottom: 6vh;
+    margin-bottom: 2vh;
   }
-  #About-me #box3 {
-    height: 61vh;
+  #PhotoPolio #contents ul li a img {
+    width: 100%;
+    height: 100%;
+  }
+  #PhotoPolio #contents ul li a #text {
+    width: 90%;
+    margin-top: 2vh;
+  }
+  #Contact > div:nth-child(2) #email {
+    width: 213px;
   }
 }
 
-@media all and (min-width: 320px) and (max-width: 500px) {
+@media all and (max-width: 500px) {
+  #home #text h2 {
+    font-size: 3em;
+  }
   #About-me > div {
-    width: 67vw;
+    width: 65%;
+    min-height: 510px;
   }
   #About-me #box1 {
-    height: 52vh;
+    height: 50vh;
+    min-height: 450px;
+    max-height: 470px;
   }
   #About-me #box1 #img {
     width: 190px;
@@ -770,6 +1000,28 @@ body {
     height: 248px;
     top: -6px;
     left: 0;
+  }
+  #Contact > div:nth-child(2) #title strong {
+    white-space: pre-line;
+    line-height: 2.2;
+  }
+  #Contact > div:nth-child(2) #title strong i {
+    display: inline;
+  }
+  #Contact > div:nth-child(2) #title strong span::after {
+    left: 20px;
+  }
+  #Contact > div:nth-child(2) img {
+    margin-top: 0;
+  }
+  #PhotoPolio #contents ul li a #text {
+    width: 100%;
+  }
+}
+
+@media all and (max-width: 390px) {
+  #About-me > div {
+    width: 80%;
   }
 }
 /*# sourceMappingURL=style.css.map */
