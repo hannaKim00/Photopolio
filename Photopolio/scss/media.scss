@@ -51,7 +51,7 @@
         a {
           flex-direction: column;
           
-          #text {
+          .contents-text {
             width: 60%;
             margin-top: 3vh;
             font-size: 1.1em;
@@ -88,7 +88,7 @@
     height: 120px;
     background: url(../images/icon2.png) no-repeat 0 0 / cover;
   }
-  #container #home #text {
+  #container #home #home-text {
     font-size: 1.4em;
   }
 
@@ -145,7 +145,7 @@
     #contents {
       ul li {
         a {
-          #text {
+          .contents-text {
             width: 80%;
           }
         }
@@ -221,7 +221,7 @@
       background: url(../images/icon2.png) no-repeat 0 0 / cover;
     }
 
-    #text {
+    #home-text {
       font-size: 1.3em;
       padding: 60px 0 0 5vw;
   
@@ -290,7 +290,7 @@
           img {
             @include size-set(100%, 100%);
           }
-          #text {
+          .contents-text {
             width: 90%;
             margin-top: 2vh;
           }
@@ -308,7 +308,7 @@
 @media all and (max-width:500px) {
   // home 
   #home {
-    #text h2 {
+    #home-text h2 {
       font-size: 3em;
     }
   }
@@ -363,7 +363,7 @@
     #contents {
       ul li {
         a {
-          #text {
+          .contents-text {
             width: 100%;
           }
         }

@@ -16,7 +16,7 @@
 #home {
   @include size-set-color(100vw, 100vh, $color2);
 
-  #text {
+  #home-text {
     @include size-set(100vw, 90vh);
     @include flex-set(center, center, column);
     @include font-set(1.5em, normal, center, #5F6476);
@@ -211,7 +211,7 @@
         a {
           @include flex-set(center, center, row);
 
-          #text {
+          .contents-text {
             width: 40%;
             @include font-set(1.05em, nowrap, center, $color1);
             word-break: keep-all;
